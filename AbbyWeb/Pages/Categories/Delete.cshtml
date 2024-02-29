@@ -1,0 +1,36 @@
+﻿@page
+@model AbbyWeb.Pages.Categories.DeleteModel
+
+@if (TempData["success"] != null)
+{
+    <h2>@TempData["success"]</h2>
+}
+
+<form method="post">
+    <div class="border p-3 m-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Delete Category</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input asp-for="@Model.Category.Id" type="hidden" />
+        <div class="mb-3">
+            <label asp-for="Category.Name"></label>
+            <input asp-for="@Model.Category.Name" class="form-control" type="text" disabled />
+            <span asp-validation-for="Category.Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Category.DisplayOrder"></label>
+            <input asp-for="@Model.Category.DisplayOrder" class="form-control" type="text" disabled />
+            <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
+        </div>
+        <button type="post" class="btn btn-danger" style="width:180px">Delete</button>
+        <a asp-page="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }
